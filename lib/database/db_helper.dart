@@ -10,6 +10,7 @@ import 'package:app_flutter/utils/utils.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+import 'dao/welcome_config_dao.dart';
 import 'model/base/db_base_bean.dart';
 
 /// 数据库相关
@@ -39,7 +40,7 @@ class DBHelper {
         onCreate: (Database db, int version) async {
       var batch = db.batch();
       // GlobalConfigDao.createGlobalConfigV1(batch);
-      // WelcomeConfigDao.createWelcomeConfigV1(batch);
+      WelcomeConfigDao.createWelcomeConfigV1(batch);
       // StudyLastestDao.createStudyLastestV1(batch);
       // HomeBookCategoryDao.createHomeBookCategoryV1(batch);
       // LastNewBookDao.createLastNewBookV1(batch);
@@ -102,7 +103,7 @@ class DBHelper {
     if (Utils.isEmpty(db) || !db!.isOpen) {
       return;
     }
-    Logger.d("start insert data ：${t.toMap()}");
+    Logger.d("start insert data ：${t.toMap()}, table = ${t.getTableName()}");
 
     // 插入操作
     await db!.insert(t.getTableName(), t.toMap(),

@@ -38,7 +38,7 @@ class WelcomeService extends BaseService implements IWelcomeServiceDao {
 
     if (res.responseIsSuccess!) {
       WelcomePageInfoResp resp = res.responseData as WelcomePageInfoResp;
-      return DataResult(resp, true);
+      return DataResult(resp.data, true);
     }
     return DataResult(null, false);
   }
