@@ -53,7 +53,7 @@ class PrettyDioLogger extends Interceptor {
       this.responseHeader = false,
       this.responseBody = true,
       this.error = true,
-      this.maxWidth = 90,
+      this.maxWidth = 70,
       this.compact = true,
       this.logPrint = print});
 

@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 
 abstract class BaseService<T extends BuildContext> {
-  BuildContext _context;
+  BuildContext context;
 
-  BaseService(BuildContext buildContext) : _context = buildContext;
+  BaseService(BuildContext buildContext) : context = buildContext;
 }

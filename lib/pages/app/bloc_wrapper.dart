@@ -6,6 +6,7 @@
 //  Copyright ©2021/7/14 app_flutter. All rights reserved.
 
 import 'package:app_flutter/bloc/global/global_bloc.dart';
+import 'package:app_flutter/bloc/welcome/welcome_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +28,8 @@ class _BlocWrapperState extends State<BlocWrapper> {
     return MultiBlocProvider(providers: [
       BlocProvider<GlobalBloc>(
           create: (_) => GlobalBloc()..add(GlobalInitEvent())),
+      BlocProvider<WelcomeBloc>(
+          create: (_) => WelcomeBloc()),
     ], child: widget.child);
   }
 }

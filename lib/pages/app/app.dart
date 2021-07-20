@@ -7,6 +7,7 @@
 
 import 'package:app_flutter/bloc/global/global_bloc.dart';
 import 'package:app_flutter/config/config.dart';
+import 'package:app_flutter/pages/welcome/welcome_page.dart';
 import 'package:app_flutter/router/td_router.dart';
 import 'package:app_flutter/widgets/td_button.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +32,7 @@ class App extends StatelessWidget {
             // fontFamily: state.fontFamily,
             platform: TargetPlatform.iOS,
           ),
-          home: Container(
-            color: Colors.white,
-            child: SafeArea(
-              child: TDButton(),
-            ),
-          ),
+          home: WelcomePage(),
         )),
       );
     });

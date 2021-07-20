@@ -50,7 +50,7 @@ class HttpManager {
           responseHeader: false,
           error: true,
           compact: true,
-          maxWidth: 90));
+          maxWidth: 70));
     }
     if (_instance == null) {
       _instance = HttpManager._();
