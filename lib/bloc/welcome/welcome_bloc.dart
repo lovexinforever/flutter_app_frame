@@ -32,10 +32,10 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
           await WelcomeService.instance(event.props[0] as BuildContext)
               .getWelcomePageInfo();
 
-      if(result.result) {
+      if (result.result) {
         List<Adv>? data = result.data;
 
-        if(Utils.isEmpty(data) || data!.length == 0) {
+        if (Utils.isEmpty(data) || data!.length == 0) {
           return;
         }
 
@@ -43,9 +43,10 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
 
         Map<String, dynamic> map = adv.toJson();
 
-        map["params"] = json.encode(adv.params?? {});
+        map["params"] = json.encode(adv.params ?? {});
 
-        await WelcomeConfigDao.insertWelcomeConfigInfo(WelcomePageInfoData.fromJson(map));
+        await WelcomeConfigDao.insertWelcomeConfigInfo(
+            WelcomePageInfoData.fromJson(map));
       }
 
       yield* getWelcomePageInfo();
@@ -55,8 +56,21 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   Stream<WelcomeState> getWelcomePageInfo() async* {
     WelcomePageInfoData? data = await WelcomeConfigDao.getWelcomeConfigData();
 
-    if(Utils.isEmpty(data)) {
+    if (Utils.isEmpty(data)) {
       Logger.w("未查到还原页面数据");
+
+      yield WelcomeInfoNoDataState();
+      return;
     }
+
+    Map<String, dynamic> map = data!.toJson();
+
+    map["params"] = json.decode(data.params ?? "{}");
+
+    Adv adv = Adv.fromJson(map);
+
+    Logger.d("查询到欢迎页面数据 adv = ${adv.toJson()}");
+
+    yield WelcomeInfoDataState(adv);
   }
 }

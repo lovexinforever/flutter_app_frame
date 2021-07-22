@@ -30,9 +30,12 @@ dependencies:
   shared_preferences: ^2.0.5 # xml 固化
   build: ^2.0.2
   build_runner: ^2.0.4
+  sprintf: ^6.0.0
   logger: ^1.0.0
   oktoast: ^3.0.0
+  common_utils: ^2.0.2
   dio: ^4.0.0
+  cached_network_image: ^3.0.0
   flutter_native_splash: ^1.2.0
   connectivity: ^3.0.6
   flutter_screenutil: ^5.0.0+2

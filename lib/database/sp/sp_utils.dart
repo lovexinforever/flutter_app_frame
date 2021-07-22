@@ -49,4 +49,7 @@ class SPUtils {
   }
 }
 
-class SPKeys {}
+class SPKeys {
+  /// 是否同意协议
+  static const String IS_AGREE = "isAgree";
+}

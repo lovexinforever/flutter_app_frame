@@ -50,7 +50,6 @@ class WelcomeConfigDao {
     List<WelcomePageInfoData?> list = await DBHelper.getInstance()!
         .queryItems<WelcomePageInfoData>(WelcomePageInfoData());
 
-    Logger.d("list === ${list.length}");
     if(Utils.isEmpty(list) || list.length == 0) {
       return null;
     }
